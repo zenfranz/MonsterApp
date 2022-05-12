@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Hero{
     public static String Name;
     public static String Desition;
@@ -17,8 +19,25 @@ public class Hero{
     public static void heroDesition(){
         switch (Desition){
             case "ударить":
-                Hero.heroAttack();
+                System.out.println("Куда нанести удар?");
+                Scanner scanner = new Scanner(System.in);
+                String TargetChoise = scanner.next();
+                switch (TargetChoise) {
+                    case "глаза":
+                        AttackType.eyeAttack();
+                        AttackType.heroAttackCalculation();
+                        break;
+                    case "голова":
+                        AttackType.headAttack();
+                        AttackType.heroAttackCalculation();
+                        break;
+                    case "тело":
+                        AttackType.bodyAttack();
+                        AttackType.heroAttackCalculation();
+                        break;
+                }
                 break;
+
             case "лечить":
                 Hero.heroHeal();
                 System.out.println("После лечения у персонажа " + Hero.Name + " " + Hero.HP + " очков здоровья");
@@ -33,21 +52,7 @@ public class Hero{
                 break;
         }
     }
-    public static void heroAttack() {
-        boolean DoCrit = Math.random() > 0.7;
-        if (DoCrit) {
-            System.out.println("Атака будет критической");
-            Hero.Modyfier += 5;
-        } else {
-            System.out.println("Атака будет обычной");
-            Hero.Modyfier = 1;
-        }
-        Monster.HP -= Math.abs(Hero.Damage * Hero.Modyfier - Monster.Defence / 2);
-        System.out.println("Персонаж " + Hero.Name + " наносит " + "\n"
-                + (Math.abs(Hero.Damage * Hero.Modyfier - Monster.Defence / 2))
-                + " единиц урона персонажу " + Monster.Name);
-        System.out.println("У персонажа " + Monster.Name + " остается " + Monster.HP + " из " + Monster.MaxHP + " единиц здоровья");
-    }
+
     public static void heroHeal(){
         boolean DoCrit = Math.random() > 0.5;
         if (DoCrit) {

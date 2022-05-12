@@ -12,9 +12,6 @@ public class Main {
         System.out.println("Вам предстоит управлять героем по имени " + Hero.Name);
         System.out.println();
         AdventurePhase adventurePhase = new AdventurePhase();
-        Monster.Name = "Гоблин Сёма";
-        System.out.println("Внезапно на вас нападает " + Monster.Name);
-        System.out.println("Начинается бой");
         BattlePhase battlePhase = new BattlePhase();
 
 

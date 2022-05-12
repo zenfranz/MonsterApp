@@ -6,7 +6,9 @@ public class BattlePhase {
     Scanner scanner = new Scanner(System.in);
 
     public BattlePhase() {
-        Monster monster = new Monster("Гоблин Сёма", 100, 100, 7,2);
+        Monster monster = new Monster("Гоблин Сёма", 100,100,5,2);
+        System.out.println("Внезапно на вас нападает " + Monster.Name);
+        System.out.println("Начинается бой");
             while (MobAction.inBattle) {
                 System.out.println("\nХод героя : " + Hero.Name);
                 MobAction.seeStats();

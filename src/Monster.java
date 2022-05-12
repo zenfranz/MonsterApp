@@ -1,34 +1,42 @@
-public class Monster{
-    public static int Modyfier;
-    static String Name;
-    static int HP, MaxHP;
-    static int Damage;
-    static int Defence;
-    boolean block;
+public class Monster extends GameCharacters{
+    static boolean DoCrit;
 
-    public Monster(String Name, int HP, int MaxHP, int Damage, int Defence) {
-        Monster.Name = Name;
-        Monster.HP = HP;
-        Monster.MaxHP = MaxHP;
-        Monster.Damage = Damage;
-        Monster.Defence = Defence;
+    Monster(String Name, int HP, int MaxHP, int Damage, int Defence) {
+        super(Name,HP,MaxHP,Damage,Defence);
     }
     public static void monsterAttack() {
-        boolean DoCrit = Math.random() > 0.8;
-        if (DoCrit) {
-            System.out.println("Атака будет критической");
-            Monster.Modyfier += 5;
-        } else {
-            System.out.println("Атака будет обычной");
-            Monster.Modyfier = 1;
+        double MonsterChoise = Math.random()*9;
+
+        switch ((int) MonsterChoise){
+            case 1:
+            case 2:
+            case 3: {
+                AttackType.eyeAttack();
+                AttackType.monsterAattackCalculation();
+                break;
+            }
+            case 4:
+            case 5:
+            case 6:{
+                AttackType.headAttack();
+                AttackType.monsterAattackCalculation();
+                break;
+            }
+            case 7:
+            case 8:
+            case 9:{
+                AttackType.bodyAttack();
+                AttackType.monsterAattackCalculation();
+                break;
+            }
+            default:
+                AttackType.bodyAttack();
+                AttackType.monsterAattackCalculation();
+
         }
-        Hero.HP -= Math.abs(Monster.Damage * Monster.Modyfier - Hero.Defence / 2);
-        System.out.println("Персонаж " + Monster.Name + " наносит " + "\n"
-                + (Math.abs(Monster.Damage * Monster.Modyfier - Hero.Defence / 2))
-                + " единиц урона персонажу " + Hero.Name);
-    }
+        }
     public static void monsterHeal(){
-        boolean DoCrit = Math.random() > 0.5;
+        boolean DoCrit = Math.random() > 0.8;
         if (DoCrit) {
             System.out.println("Критическое лечение");
             Monster.HP += 30;
