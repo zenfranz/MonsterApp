@@ -1,20 +1,12 @@
 import java.util.Scanner;
 
-public class Hero{
-    public static String Name;
+public class Hero extends GameCharacters{
     public static String Desition;
-    static int HP, MaxHP;
-    public static int Damage;
-    static int Defence;
-    public static int Modyfier;
+
 
 
     public Hero(String Name, int HP, int MaxHP, int Damage, int Defence) {
-        Hero.Name = Name;
-        Hero.HP = HP;
-        Hero.MaxHP = MaxHP;
-        Hero.Damage = Damage;
-        Hero.Defence = Defence;
+        super(Name,HP,MaxHP,Damage,Defence);
     }
     public static void heroDesition(){
         switch (Desition){
@@ -24,16 +16,16 @@ public class Hero{
                 String TargetChoise = scanner.next();
                 switch (TargetChoise) {
                     case "глаза":
-                        AttackType.eyeAttack();
-                        AttackType.heroAttackCalculation();
+                        ActionList.eyeAttack();
+                        ActionList.heroAttackCalculation();
                         break;
                     case "голова":
-                        AttackType.headAttack();
-                        AttackType.heroAttackCalculation();
+                        ActionList.headAttack();
+                        ActionList.heroAttackCalculation();
                         break;
                     case "тело":
-                        AttackType.bodyAttack();
-                        AttackType.heroAttackCalculation();
+                        ActionList.bodyAttack();
+                        ActionList.heroAttackCalculation();
                         break;
                 }
                 break;
@@ -43,9 +35,9 @@ public class Hero{
                 System.out.println("После лечения у персонажа " + Hero.Name + " " + Hero.HP + " очков здоровья");
                 break;
             case "дружить":
-                MobAction.inBattle = false;
-                MobAction.frendship();
-                MobAction.battleEnd();
+                ActionList.InBattleState = false;
+                ActionList.frendship();
+                ActionList.stopbattle();
                 break;
             default:
                 System.out.println("Вы пропускаете ход. Возможно вы ввели команду неверно");

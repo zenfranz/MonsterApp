@@ -11,27 +11,27 @@ public class Monster extends GameCharacters{
             case 1:
             case 2:
             case 3: {
-                AttackType.eyeAttack();
-                AttackType.monsterAattackCalculation();
+                ActionList.eyeAttack();
+                ActionList.monsterAattackCalculation();
                 break;
             }
             case 4:
             case 5:
             case 6:{
-                AttackType.headAttack();
-                AttackType.monsterAattackCalculation();
+                ActionList.headAttack();
+                ActionList.monsterAattackCalculation();
                 break;
             }
             case 7:
             case 8:
             case 9:{
-                AttackType.bodyAttack();
-                AttackType.monsterAattackCalculation();
+                ActionList.bodyAttack();
+                ActionList.monsterAattackCalculation();
                 break;
             }
             default:
-                AttackType.bodyAttack();
-                AttackType.monsterAattackCalculation();
+                ActionList.bodyAttack();
+                ActionList.monsterAattackCalculation();
 
         }
         }
@@ -52,7 +52,7 @@ public class Monster extends GameCharacters{
         }
     }
     public static void monsterDecition() {
-        if ((!MobAction.frends)|(MobAction.inBattle)) {
+        if ((!ActionList.FriendState)|(ActionList.InBattleState)) {
             System.out.println("\nХод героя : " + Monster.Name);
             if (Math.random() > 0.4) {
                 System.out.println(Monster.Name + " решает Атаковать");
@@ -64,7 +64,7 @@ public class Monster extends GameCharacters{
             }
         }
         else {
-            MobAction.battleEnd();
+            ActionList.stopbattle();
         }
     }
 }
